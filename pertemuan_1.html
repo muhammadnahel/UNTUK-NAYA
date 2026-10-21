@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#ff5a8a">
+<title>Happy Birthday, My Favorite Girl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ 1. INTRO / LOADING ============ -->
+  <section class="scene active" id="s-intro">
+    <canvas class="pixbg"></canvas>
+    <div class="stars"></div>
+    <div class="balloons"></div>
+    <div class="sign-wrap">
+      <div class="sign" id="sign">
+        <i class="rope l"></i><i class="rope r"></i>
+        <b class="stud tl">✕</b><b class="stud tr">✕</b><b class="stud bl">✕</b><b class="stud br">✕</b>
+        <div class="sign-in">
+          <div id="signHello">
+            <h1 class="px-title" id="helloTitle">Hi Naya, ready?</h1>
+            <button class="px-btn" id="btnStart">Let's Go!</button>
+            <p class="sub" id="helloSub">tap mulai, ada something for you :)</p>
+          </div>
+          <div id="signLoad" hidden>
+            <h1 class="px-title big">Loading</h1>
+            <div class="bar"><div class="fill" id="barFill"></div></div>
+            <p class="sub" id="loadTxt">0% · mohon tunggu…</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. CAMERA (front -> back) ============ -->
+  <section class="scene" id="s-cam">
+    <div class="cam3d">
+      <div class="cam" id="cam">
+        <div class="face front"><svg viewBox="0 0 320 250" class="camsvg" id="camFrontA"></svg></div>
+        <div class="face back">
+          <div class="cb">
+            <div class="cb-vf"></div>
+            <div class="cb-side"></div>
+            <div class="cb-screen"><canvas id="noise" width="96" height="96"></canvas><div class="cb-txt" id="screenTxt"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. HAPPY BIRTHDAY ============ -->
+  <section class="scene" id="s-bday">
+    <canvas class="pixbg"></canvas>
+    <div class="tint"></div>
+    <div class="stars"></div>
+    <div class="balloons"></div>
+    <div class="bday-box">
+      <h2 class="press y">HAPPY BIRTHDAY!</h2>
+      <p class="press w">MY FAVORITE GIRL <span class="heart">♥</span></p>
+      <button class="px-btn sm" id="btnBdayNext">Lanjut ›</button>
+    </div>
+  </section>
+
+  <!-- ============ 4. GALLERY ============ -->
+  <section class="scene" id="s-gal">
+    <canvas class="pixbg"></canvas>
+    <div class="tint"></div>
+    <div class="stars"></div>
+    <div class="hud">
+      <span class="moment" id="momentTxt">Moment 1 / 3</span>
+      <button class="px-btn xs" id="btnMusic">MUSIK ON</button>
+    </div>
+    <div class="title-card" id="titleCard">
+      <small class="press w">OUR LITTLE STORY</small>
+      <h2 class="pix-big" id="gTitle">First Spark</h2>
+      <div class="dots3"><i></i><i></i><i></i></div>
+      <div class="pill" id="gSub">how it started</div>
+    </div>
+    <div class="frame-wrap" id="frameWrap">
+      <div class="frame">
+        <b class="stud tl">✕</b><b class="stud tr">✕</b><b class="stud bl">✕</b><b class="stud br">✕</b>
+        <div class="photo"><img id="gImg" alt=""><i class="grain"></i><i class="vig"></i></div>
+        <div class="pill cap" id="gCap">how it started</div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="px-btn xs" id="btnPrev">‹</button>
+      <span class="navdots" id="navDots"><i></i><i></i><i></i></span>
+      <button class="px-btn sm" id="btnNext">Lanjut ›</button>
+    </div>
+  </section>
+
+  <!-- ============ 5. PRINT ============ -->
+  <section class="scene" id="s-print">
+    <div class="cam-top" id="camTop">
+      <svg viewBox="0 0 320 250" class="camsvg" id="camFrontB"></svg>
+    </div>
+    <div class="stack" id="stack">
+      <div class="paper photo-paper" id="pPhoto"><div class="pimg"><img id="pImg" alt=""><i class="grain"></i></div></div>
+      <div class="paper letter" id="pL1">
+        <div class="lh"><span>♥</span></div>
+        <h4>Officially Forever</h4>
+        <p id="l1txt"></p>
+      </div>
+      <div class="paper letter l2" id="pL2">
+        <div class="lh"><span>♥</span></div>
+        <h4>For My Favorite Person</h4>
+        <p id="l2txt"></p>
+      </div>
+      <div class="paper playlist" id="pPl">
+        <div class="lh"><span>♥</span></div>
+        <h4>Playlist Kamu</h4>
+        <ul id="plist"></ul>
+      </div>
+    </div>
+    <div class="hint" id="hint">ketuk kertasnya untuk membuka</div>
+  </section>
+
+  <!-- ============ 6. THE END ============ -->
+  <section class="scene" id="s-endcam">
+    <div class="cam3d">
+      <div class="cam flipped" id="cam2">
+        <div class="face back">
+          <div class="cb">
+            <div class="cb-vf"></div><div class="cb-side"></div>
+            <div class="cb-screen red"><div class="cb-txt show">The end.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" id="s-end">
+    <div class="crt"></div>
+    <div class="end-box">
+      <h2 class="pix-big glow">The end.</h2>
+      <button class="px-btn" id="btnRestart">Mulai dari Awal</button>
+    </div>
+  </section>
+
+  <div class="flash" id="flash"></div>
+  <canvas id="confetti"></canvas>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
